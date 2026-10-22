@@ -60,7 +60,7 @@ Los packs se reclaman y utilizan una sola vez, en un único cupón de demostraci
 
 Las misiones son: primera compra (60), dos repostajes dentro de siete días consecutivos (260), lavado (160) y un repostaje de más de 30 € (240). Los importes se guardan en céntimos; 30 € exactos no cumplen. Se deduplican identificadores de tickets y se conserva el estado completado de la misión semanal. Los datos iniciales ya incluyen la primera misión obtenida y un repostaje. Las tres restantes permiten llegar desde 240 hasta 900 puntos.
 
-Al actualizar desde el estado anterior se conservan saldo, prémium, progreso y cupones. Las antiguas misiones de tienda/vending/recarga se sustituyen por las nuevas, sin convertir operaciones antiguas en repostajes. El logo DISA LEVEL UP está en `src/assets/disa-level-up.png` y aparece en Inicio y en la cabecera del pase.
+Al actualizar desde el estado anterior se conservan saldo, prémium, progreso y cupones. Las antiguas misiones de tienda/vending/recarga se sustituyen por las nuevas, sin convertir operaciones antiguas en repostajes. El logo DISA LEVEL UP está en `src/assets/disa-level-up-original.jpeg` y aparece en Inicio y en la cabecera del pase.
 
 El pase sigue una línea horizontal con diez niveles numerados: recompensas prémium arriba y gratuitas abajo, con etiquetas laterales fijas. El azul DISA, el amarillo del prémium y las tarjetas con grandes imágenes siguen la referencia visual. En móvil se desliza únicamente el tablero, sin desbordar la página. Las flechas, la navegación por niveles y el teclado permiten explorar todas las recompensas. Las imágenes de menús son genéricas, no fotografías oficiales de los menús nombrados.
 
@@ -74,4 +74,4 @@ Para actualizar la web después de cambiar el código, ejecuta `npm ci`, `npm te
 
 La presentación horizontal se ha comprobado en Chromium a 320, 390, 768 y 1440 px, incluyendo navegación por niveles, controles de avance, detalles y los recorridos de canje y persistencia.
 
-El logo se importa como recurso de Vite: la compilación genera una URL con huella de contenido para evitar reutilizar versiones anteriores en caché. El archivo actual es una recreación de la referencia; para fidelidad exacta debe sustituirse por el archivo original del usuario.
+El logo se importa como recurso de Vite: la compilación genera una URL con huella de contenido para evitar reutilizar versiones anteriores en caché. Se utiliza el JPEG original extraído del ZIP del usuario, sin modificar sus bytes. El encuadre se ajusta únicamente con CSS para reducir los márgenes blancos, sin recrear el logo.
