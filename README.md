@@ -33,8 +33,14 @@ Los accesos a servicios, Ofertas, Mapa y Hogar muestran contexto; el prototipo d
 
 ## Validación
 
-Ocho pruebas automatizadas de reglas: niveles y objetivos, deduplicación, prémium, saldo insuficiente, bloqueo de premios, canje, caducidad, serialización y reinicio. La prueba de serialización no sustituye una prueba de persistencia en un navegador real.
+Nueve pruebas automatizadas de reglas: niveles y objetivos, deduplicación, prémium, saldo insuficiente, bloqueo de premios, canje, caducidad, serialización y reinicio. La prueba de serialización no sustituye una prueba de persistencia en un navegador real.
 
 Validación adicional realizada en Chromium a 390 px y 1440 px: objetivo y subida de nivel, activación y saldo, reclamación y canje, persistencia tras recargar, reinicio y saldo insuficiente. Sin errores de JavaScript ni desbordamiento horizontal móvil.
 
 Las fotos ilustrativas de recompensas han sido generadas para el prototipo y se sirven desde `public/rewards/rewards.png`, sin peticiones externas. No representan productos oficiales. La nueva temporada usa una clave local propia: conserva los datos de la demostración anterior sin aplicarlos a los nuevos premios.
+
+## Recompensas y línea de niveles
+
+El catálogo explícito `rewardLevels` define una recompensa gratuita y una prémium superior por nivel. Los niveles iniciales incluyen patatas pequeñas/grandes, snacks al 15/25% y lavado básico/completo. Después aparecen peluches, descuentos en McMenú Big Mac, McPollo y Big Tasty y repostajes con porcentajes y topes crecientes. Todos los beneficios son ficticios; los descuentos en combustible no exigen volumen mínimo.
+
+El pase muestra una línea vertical con nodos numerados y dos tarjetas por parada (gratuita y prémium). Una línea de navegación superior permite saltar a cualquiera de los diez niveles con ratón o teclado. En móvil se mantiene la comparación de ambas tarjetas sin desplazamiento horizontal. Las imágenes de menús son genéricas, no fotografías oficiales de los menús nombrados.
