@@ -44,3 +44,11 @@ Las fotos ilustrativas de recompensas han sido generadas para el prototipo y se 
 El catálogo explícito `rewardLevels` define una recompensa gratuita y una prémium superior por nivel. Los niveles iniciales incluyen patatas pequeñas/grandes, snacks al 15/25% y lavado básico/completo. Después aparecen peluches, descuentos en McMenú Big Mac, McPollo y Big Tasty y repostajes con porcentajes y topes crecientes. Todos los beneficios son ficticios; los descuentos en combustible no exigen volumen mínimo.
 
 El pase muestra una línea vertical con nodos numerados y dos tarjetas por parada (gratuita y prémium). Una línea de navegación superior permite saltar a cualquiera de los diez niveles con ratón o teclado. En móvil se mantiene la comparación de ambas tarjetas sin desplazamiento horizontal. Las imágenes de menús son genéricas, no fotografías oficiales de los menús nombrados.
+
+## Publicar en GitHub Pages
+
+La rama `gh-pages` contiene la versión estática compilada. Para activar el sitio: GitHub → Settings → Pages → Build and deployment → Deploy from a branch → `gh-pages` → `/ (root)` → Save.
+
+Dirección prevista tras activarlo: https://carlosmireles.github.io/DisaBattlePass/
+
+Para actualizar la web después de cambiar el código, ejecuta `npm ci`, `npm test` y `npm run build`, y publica el contenido de `dist/` en la rama `gh-pages` (incluido un archivo `.nojekyll`). Subir cambios a `main` por sí solo no actualiza la web. Las rutas relativas permiten servir los recursos desde la subcarpeta del repositorio. No se necesita servidor de aplicación, cuentas ni claves. Cada visitante conserva su propia demostración en el navegador.
