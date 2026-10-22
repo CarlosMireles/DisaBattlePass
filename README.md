@@ -66,11 +66,13 @@ El pase sigue una línea horizontal con diez niveles numerados: recompensas pré
 
 ## Publicar en GitHub Pages
 
-La rama `gh-pages` contiene la versión estática compilada. Para activar el sitio: GitHub → Settings → Pages → Build and deployment → Deploy from a branch → `gh-pages` → `/ (root)` → Save.
+El flujo `.github/workflows/pages.yml` compila y publica el código de `main` mediante las acciones oficiales de Pages. Ejecuta las pruebas, genera `dist/` y despliega un único artefacto; el estado se consulta en la pestaña Actions.
 
-Dirección prevista tras activarlo: https://carlosmireles.github.io/DisaBattlePass/
+Configuración de una sola vez: GitHub → Settings → Pages → Build and deployment → Source → **GitHub Actions**. Si existe una restricción de ramas en el entorno `github-pages`, debe permitir `main`.
 
-Para actualizar la web después de cambiar el código, ejecuta `npm ci`, `npm test` y `npm run build`, y publica el contenido de `dist/` en la rama `gh-pages` (incluido un archivo `.nojekyll`). Subir cambios a `main` por sí solo no actualiza la web. Las rutas relativas permiten servir los recursos desde la subcarpeta del repositorio. No se necesita servidor de aplicación, cuentas ni claves. Cada visitante conserva su propia demostración en el navegador.
+Después de activar ese origen, abre Actions → Publicar DISA LEVEL UP en Pages → Run workflow → main para publicar la versión actual. Los siguientes cambios en `main` lanzarán el flujo automáticamente. La web conserva la dirección https://carlosmireles.github.io/DisaBattlePass/ .
+
+La rama `gh-pages` conserva la última publicación manual como alternativa, pero el flujo de Actions publica directamente su artefacto y no necesita actualizar esa rama. No requiere secretos personalizados ni tokens añadidos. El archivo público `version.json` identifica el commit de cada despliegue de Actions y permite distinguir una publicación anterior de una nueva.
 
 La presentación horizontal se ha comprobado en Chromium a 320, 390, 768 y 1440 px, incluyendo navegación por niveles, controles de avance, detalles y los recorridos de canje y persistencia.
 

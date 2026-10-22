@@ -1,0 +1,55 @@
+name: Publicar DISA LEVEL UP en Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Compilar y comprobar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Comprobar reglas del pase
+        run: npm test
+      - name: Compilar la web
+        run: npm run build
+      - name: Identificar la versión publicada
+        env:
+          BUILD_SHA: ${{ github.sha }}
+        run: node -e 'require("fs").writeFileSync("dist/version.json", JSON.stringify({commit:process.env.BUILD_SHA,builtAt:new Date().toISOString()}))'
+      - name: Preparar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Subir la web compilada
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    name: Publicar en GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
