@@ -25,14 +25,16 @@ Abre el puerto 5173 en tu navegador. Para generar la versión estática: `npm ru
 
 ## Configuración
 
-`src/model.ts` centraliza temporada, fecha final, precio, niveles, beneficios y reglas. El progreso de temporada es independiente del saldo DISA. La temporada usa fecha final de ejemplo 31/03/2027. La fecha simulada permite probar días distintos y vencimientos.
+`src/model.ts` centraliza temporada, fecha final, precio, niveles, beneficios y reglas. El progreso de temporada es independiente del saldo DISA. La temporada de colaboración ficticia DISA × McDonald’s dura dos meses: del 01/10/2026 al 30/11/2026 (fin exclusivo: 01/12/2026 UTC). Contiene 8 premios McDonald’s (40 %) y 12 DISA (60 %). Cada premio declara marca, foto, lugar y condiciones. Fuera de temporada se bloquean activación, reclamación y obtención de progreso. La fecha simulada permite probar días distintos y vencimientos.
 
-Estado local: clave `disa-pass-v1` en localStorage. Reiniciar elimina los avances de la demostración. Los QR se generan localmente y codifican exclusivamente códigos de demostración. No se utilizan imágenes ni fuentes externas.
+Estado local: clave `disa-pass-${CONFIG.id}` en localStorage. Reiniciar elimina los avances de la demostración. Los QR se generan localmente y codifican exclusivamente códigos de demostración. No se utilizan imágenes ni fuentes externas.
 
 Los accesos a servicios, Ofertas, Mapa y Hogar muestran contexto; el prototipo desarrolla solamente el pase. No incluye tarifas ni promociones oficiales.
 
 ## Validación
 
-Seis pruebas automatizadas de reglas: niveles y objetivos, deduplicación, prémium, saldo insuficiente, bloqueo de premios, canje, caducidad, serialización y reinicio. La prueba de serialización no sustituye una prueba de persistencia en un navegador real.
+Ocho pruebas automatizadas de reglas: niveles y objetivos, deduplicación, prémium, saldo insuficiente, bloqueo de premios, canje, caducidad, serialización y reinicio. La prueba de serialización no sustituye una prueba de persistencia en un navegador real.
 
 Validación adicional realizada en Chromium a 390 px y 1440 px: objetivo y subida de nivel, activación y saldo, reclamación y canje, persistencia tras recargar, reinicio y saldo insuficiente. Sin errores de JavaScript ni desbordamiento horizontal móvil.
+
+Las fotos ilustrativas de recompensas han sido generadas para el prototipo y se sirven desde `public/rewards/rewards.png`, sin peticiones externas. No representan productos oficiales. La nueva temporada usa una clave local propia: conserva los datos de la demostración anterior sin aplicarlos a los nuevos premios.
