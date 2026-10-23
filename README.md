@@ -81,3 +81,11 @@ El logo se importa como recurso de Vite: la compilación genera una URL con huel
 ## Misión 0: encuesta inicial
 
 Encuesta opcional de cuatro preguntas con perfiles Desayunador, Ahorrador y Social, borrador persistente y recompensa única de +100 XP. Se abre tras la introducción; también tiene un acceso en el pase. La pantalla independiente se sirve en `/mision-0.html`. Los nuevos estilos están aislados con Tailwind prefijado y sin Preflight. Consulta [código e integración](src/onboarding/README.md).
+
+## Diseño Pasaporte DISA
+
+La pantalla del pase usa la cabecera azul `#00427A`, el título manuscrito amarillo y los acentos verde/amarillo de la referencia. El colibrí procede del logo original recibido en ZIP. La fuente Kalam se sirve localmente en WOFF y conserva su licencia OFL en `src/assets/fonts/`.
+
+Las dos filas mantienen los 10 niveles reales: prémium arriba, gratuito abajo, con badges azules y verdes. El saldo y los XP del encabezado se calculan desde el estado de la demo; los números del ejemplo visual no sustituyen los datos del usuario. Los checks, candados, premios utilizados y caducados reflejan el estado de cada cupón. Las recompensas y su proporción 40/60 no cambian. La imagen del peluche azul es ilustrativa, no una fotografía oficial.
+
+La nueva presentación se limita a la vista del pase (`src/passport/`); Inicio y Misión 0 conservan sus pantallas. Se han verificado los tabs Recompensas/Misiones/Mis premios, canjes, activación prémium, saldo, persistencia y navegación, además de la encuesta, a anchuras entre 320 y 1440 px.
