@@ -3,3 +3,5 @@ dist/
 *.log
 
 *.tsbuildinfo
+
+/src/onboarding/tailwind.css

@@ -77,3 +77,7 @@ La rama `gh-pages` conserva la última publicación manual como alternativa, per
 La presentación horizontal se ha comprobado en Chromium a 320, 390, 768 y 1440 px, incluyendo navegación por niveles, controles de avance, detalles y los recorridos de canje y persistencia.
 
 El logo se importa como recurso de Vite: la compilación genera una URL con huella de contenido para evitar reutilizar versiones anteriores en caché. Se utiliza el JPEG original extraído del ZIP del usuario, sin modificar sus bytes. El encuadre se ajusta únicamente con CSS para reducir los márgenes blancos, sin recrear el logo.
+
+## Misión 0: encuesta inicial
+
+Encuesta opcional de cuatro preguntas con perfiles Desayunador, Ahorrador y Social, borrador persistente y recompensa única de +100 XP. Se abre tras la introducción; también tiene un acceso en el pase. La pantalla independiente se sirve en `/mision-0.html`. Los nuevos estilos están aislados con Tailwind prefijado y sin Preflight. Consulta [código e integración](src/onboarding/README.md).

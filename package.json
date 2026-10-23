@@ -1,1 +1,29 @@
-{"name":"tu-pase-disa","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite --host 0.0.0.0","build":"tsc -b && vite build","test":"vitest run"},"dependencies":{"react":"^19.0.0","react-dom":"^19.0.0","lucide-react":"^0.468.0","qrcode":"^1.5.4"},"devDependencies":{"typescript":"~5.7.2","vite":"^6.1.0","@vitejs/plugin-react":"^4.3.4","@types/react":"^19.0.0","@types/react-dom":"^19.0.0","@types/qrcode":"^1.5.5","vitest":"^3.0.0"}}
+{
+  "name": "tu-pase-disa",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run build:survey && tsc -b && vite build",
+    "test": "vitest run",
+    "build:survey": "tailwindcss -c tailwind.mission0.config.cjs -i src/onboarding/tailwind.input.css -o src/onboarding/tailwind.css --minify",
+    "predev": "npm run build:survey"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.0"
+  }
+}

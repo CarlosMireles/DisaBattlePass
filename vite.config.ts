@@ -1,4 +1,7 @@
 import { defineConfig } from 'vite';
 
-// Rutas relativas para servir tanto en local como en /DisaBattlePass/.
-export default defineConfig({ base: './' });
+// Encuesta independiente y aplicación comparten recursos y rutas relativas para Pages.
+export default defineConfig({
+  base: './',
+  build: { rollupOptions: { input: { app: 'index.html', mission0: 'mision-0.html' } } },
+});
