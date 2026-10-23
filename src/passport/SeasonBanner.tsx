@@ -1,0 +1,4 @@
+import{Clock}from'lucide-react';
+type Props={days:number;active:boolean;dates:string};
+/** Una sola cabecera compartida por Recompensas, Misiones y Mis premios. */
+export function SeasonBanner({days,active,dates}:Props){return <section className="levelup-season-banner" aria-label="Temporada DISA LEVEL UP"><div className="passport-season-strip"><span><span className="passport-season-dot"/> TEMPORADA 01 <b>DISA × McDonald’s</b></span><span><Clock size={13}/>{active?`${days} días restantes`:'Temporada no activa'}</span><small>{dates} · Colaboración ficticia</small></div><div className="passport-rewards-intro"><div><span className="passport-eyebrow">PEQUEÑAS PARADAS, GRANDES MOMENTOS.</span><h2>Tu energía también se premia.</h2></div><span className="passport-partner-pill">40 % McDonald’s <i/> 60 % DISA</span></div></section>}

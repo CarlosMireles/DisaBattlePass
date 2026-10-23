@@ -19,6 +19,14 @@ export const rewardLevels:LevelSpec[]=[
 {free:disa('12% en un repostaje',7,'Tu premio final · hasta 10 €','Un único repostaje. Descuento máximo de 10 €. Sin volumen mínimo.',4),premium:mcd('Dos McMenús Big Mac gratis',8,'Gran final para compartir','Dos McMenús Big Mac medianos completos, sin compra mínima. Un único canje para los dos menús. Extras excluidos.')},
 ];
 export const prizes:Prize[]=rewardLevels.flatMap((row,index)=>[false,true].map(premium=>({...row[premium?'premium':'free'],id:`${index+1}-${premium?'p':'f'}`,level:index+1,premium})));
+/** Selección por identidad estable, sin índices ni un premio por defecto. */
+export function resolvePrize(s:State,id:string):Prize|undefined{
+ const catalogue=prizes.find(p=>p.id===id);if(!catalogue)return undefined;
+ const snapshot=s.claims[id]?.prize;
+ const textFields: (keyof Prize)[]=['title','where','conditions','highlight'];
+ if(snapshot&&snapshot.id===id&&snapshot.level===catalogue.level&&snapshot.premium===catalogue.premium&&Number.isInteger(snapshot.photo)&&snapshot.photo>=0&&snapshot.photo<=9&&['DISA','McDonald’s'].includes(snapshot.brand)&&textFields.every(k=>typeof snapshot[k]==='string'))return snapshot;
+ return catalogue;
+}
 export const goals=[
 {id:'first',title:'Tu primera compra',detail:'Identifícate con la app al realizar tu primera compra en tienda o un repostaje.',target:1,xp:60},
 {id:'weekly',title:'Reposta 2 veces en una semana',detail:'Registra dos repostajes distintos dentro de un periodo de 7 días consecutivos. Solo cuentan tus visitas habituales.',target:2,xp:260},

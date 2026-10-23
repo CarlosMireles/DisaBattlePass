@@ -1,4 +1,4 @@
-# Tu Pase DISA
+# DISA LEVEL UP
 
 Prototipo navegable para hackathon, con datos ficticios. No está conectado a DISA ni realiza operaciones reales.
 
@@ -37,7 +37,7 @@ Doce pruebas automatizadas de reglas: niveles y objetivos, deduplicación, prém
 
 Validación adicional realizada en Chromium a 390 px y 1440 px: objetivo y subida de nivel, activación y saldo, reclamación y canje, persistencia tras recargar, reinicio y saldo insuficiente. Sin errores de JavaScript ni desbordamiento horizontal móvil.
 
-Las fotos ilustrativas de recompensas han sido generadas para el prototipo y se sirven desde `public/rewards/rewards.png`, sin peticiones externas. No representan productos oficiales. La nueva temporada usa una clave local propia: conserva los datos de la demostración anterior sin aplicarlos a los nuevos premios.
+Las fotos ilustrativas de recompensas han sido generadas para el prototipo y se sirven desde `src/assets/rewards/`, sin peticiones externas. No representan productos oficiales. La nueva temporada usa una clave local propia: conserva los datos de la demostración anterior sin aplicarlos a los nuevos premios.
 
 ## Recompensas y línea de niveles
 
@@ -82,10 +82,18 @@ El logo se importa como recurso de Vite: la compilación genera una URL con huel
 
 Encuesta opcional de cuatro preguntas con perfiles Desayunador, Ahorrador y Social, borrador persistente y recompensa única de +100 XP. Se abre tras la introducción; también tiene un acceso en el pase. La pantalla independiente se sirve en `/mision-0.html`. Los nuevos estilos están aislados con Tailwind prefijado y sin Preflight. Consulta [código e integración](src/onboarding/README.md).
 
-## Diseño Pasaporte DISA
+## Diseño DISA LEVEL UP
 
 La pantalla del pase usa la cabecera azul `#00427A`, el título manuscrito amarillo y los acentos verde/amarillo de la referencia. El colibrí procede del logo original recibido en ZIP. La fuente Kalam se sirve localmente en WOFF y conserva su licencia OFL en `src/assets/fonts/`.
 
-Las dos filas mantienen los 10 niveles reales: prémium arriba, gratuito abajo, con badges azules y verdes. El saldo y los XP del encabezado se calculan desde el estado de la demo; los números del ejemplo visual no sustituyen los datos del usuario. Los checks, candados, premios utilizados y caducados reflejan el estado de cada cupón. Las recompensas y su proporción 40/60 no cambian. La imagen del peluche azul es ilustrativa, no una fotografía oficial.
+Las dos filas mantienen los 10 niveles reales: prémium arriba, gratuito abajo, con badges azules y verdes. El saldo y los XP del encabezado se calculan desde el estado de la demo; los números del ejemplo visual no sustituyen los datos del usuario. Los checks, candados, premios utilizados y caducados reflejan el estado de cada cupón. Las recompensas y su proporción 40/60 no cambian. La imagen del peluche verde es ilustrativa, no una fotografía oficial.
 
 La nueva presentación se limita a la vista del pase (`src/passport/`); Inicio y Misión 0 conservan sus pantallas. Se han verificado los tabs Recompensas/Misiones/Mis premios, canjes, activación prémium, saldo, persistencia y navegación, además de la encuesta, a anchuras entre 320 y 1440 px.
+
+## Coherencia visual e identidad de recompensas
+
+La cabecera usa el nombre **DISA LEVEL UP** en todas las secciones. `SeasonBanner` es el mismo componente para Recompensas, Misiones y Mis premios: comparte el eslogan, fechas, días restantes, colaboración y estilos, sin copiar bloques independientes.
+
+Tarjetas, modal y Mis premios usan `RewardArtwork`: el peluche verde tiene una imagen individual, y los demás premios tienen recortes explícitos del catálogo. No existe una imagen por defecto de hamburguesa para premios desconocidos. La selección guarda un ID y se resuelve con `resolvePrize`; un snapshot que pertenezca a otro ID se ignora. Las condiciones de cupones válidos se mantienen. Los QR cancelan resultados antiguos al cambiar de selección.
+
+Se añaden seis pruebas de regresión de identidad e imágenes a las 19 existentes. La comprobación en navegador compara tarjeta y modal para los veinte premios, ambos peluches y sus cupones, además de la igualdad del banner entre pestañas.
